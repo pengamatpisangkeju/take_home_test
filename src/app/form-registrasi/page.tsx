@@ -3,7 +3,7 @@ import {
   getProvinces,
   getRegencies,
   getVillages,
-} from "@/api/api";
+} from "@/api/wilayah";
 import RegisterForm from "./register-form";
 import Separator from "@/components/Separator";
 
