@@ -213,104 +213,97 @@ export default function RegisterForm({
 
   return (
     <form className="grid gap-4" onSubmit={handleSubmit}>
-      <FormField label="Nama Lengkap" error={errors.nama_lengkap}>
+      <FormField label="Nama Lengkap" error={errors.nama_lengkap} required={true}>
         <Input
           name="nama_lengkap"
           value={formData.nama_lengkap}
           onChange={handleChange}
-          required={true}
         />
       </FormField>
 
-      <FormField label="Nama Ibu" error={errors.nama_ibu}>
+      <FormField label="Nama Ibu" error={errors.nama_ibu} required={true}>
         <Input
           name="nama_ibu"
           value={formData.nama_ibu}
           onChange={handleChange}
-          required={true}
         />
       </FormField>
 
-      <FormField label="Tanggal Lahir" error={errors.tanggal_lahir}>
+      <FormField label="Tanggal Lahir" error={errors.tanggal_lahir} required={true}>
         <Input
           name="tanggal_lahir"
           type="date"
           value={formData.tanggal_lahir}
           onChange={handleChange}
-          required={true}
         />
       </FormField>
 
-      <FormField label="Email" error={errors.email}>
+      <FormField label="Email" error={errors.email} required={true}>
         <Input
           name="email"
           type="email"
           value={formData.email}
           onChange={handleChange}
-          required={true}
         />
       </FormField>
 
-      <FormField label="No. Handphone" error={errors.no_hp}>
+      <FormField label="No. Handphone" error={errors.no_hp} required={true}>
         <Input
           name="no_hp"
           value={formData.no_hp}
           onChange={handleChange}
-          required={true}
         />
       </FormField>
 
-      <FormField label="Alamat" error={errors.alamat}>
+      <FormField label="Alamat" error={errors.alamat} required={true}>
         <Textarea
           name="alamat"
           value={formData.alamat}
           onChange={handleChange}
-          required={true}
         />
       </FormField>
 
-      <FormField label="Provinsi" error={errors.provinsi}>
+      <FormField label="Provinsi" error={errors.provinsi} required={true}>
         <Select
           name="provinsi"
           options={provinceOptions}
           placeholder="Pilih Provinsi"
           value={formData.provinsi}
           onChange={handleProvinceChange}
-          required={true}
         />
       </FormField>
 
-      <FormField label="Kabupaten" error={errors.kabupaten}>
+      <FormField label="Kabupaten" error={errors.kabupaten} required={true}>
         <Select
           name="kabupaten"
           options={regenciesOptions}
           placeholder="Pilih Kabupaten"
           value={formData.kabupaten}
           onChange={handleRegencyChange}
-          required={true}
-        />
+          disabled={formData.provinsi === ""}
+          />
       </FormField>
 
-      <FormField label="Kecamatan" error={errors.kecamatan}>
+      <FormField label="Kecamatan" error={errors.kecamatan} required={true}>
         <Select
           name="kecamatan"
           options={districtsOptions}
           placeholder="Pilih Kecamatan"
           value={formData.kecamatan}
           onChange={handleDistrictChange}
-          required={true}
-        />
+          disabled={formData.kecamatan === ""}
+          />
       </FormField>
 
-      <FormField label="Kelurahan" error={errors.kelurahan}>
+      <FormField label="Kelurahan" error={errors.kelurahan} required={true}>
         <Select
           name="kelurahan"
           options={villageOptions}
           placeholder="Pilih Kelurahan"
           value={formData.kelurahan}
           onChange={handleChange}
-          required={true}
-        />
+          disabled={formData.kelurahan === ""}
+          />
       </FormField>
 
       <FormField label="RT" error={errors.rt}>
@@ -339,7 +332,7 @@ export default function RegisterForm({
         <label htmlFor="konfirmasi">Konfirmasi bahwa data sudah valid</label>
       </div>
 
-      <Button type="submit" text="Submit" />
+      <Button type="submit" text="Submit" disabled={!isConfirmed}/>
     </form>
   );
 }
